@@ -28,7 +28,7 @@ public class UserController {
         //noinspection SpringMVCViewInspection
         return "usuarios/new";
     }
-
+ //este comentario es para ver que onda el commit jajaja xd saludis
     @PostMapping
     public String create(@ModelAttribute Usuario usuario){
         usuario.setApellido("");
