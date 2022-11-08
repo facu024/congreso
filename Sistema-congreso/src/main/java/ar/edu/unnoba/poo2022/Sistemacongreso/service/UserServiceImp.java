@@ -15,7 +15,7 @@ public class UserServiceImp implements IUserService{
 
     @Override
     public Usuario create(Usuario usuario) {
-        if (repository.findByUserName(usuario.getNombre()) == null) {
+        if (repository.findByEmail(usuario.getEmail()) == null) {
             usuario = repository.save(usuario);
         }
         return usuario;

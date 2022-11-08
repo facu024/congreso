@@ -31,6 +31,8 @@ public class UserController {
 
     @PostMapping
     public String create(@ModelAttribute Usuario usuario){
+        usuario.setApellido("");
+        usuario.setNombre("");
         userService.create(usuario);
         return "redirect:/usuarios";
     }
