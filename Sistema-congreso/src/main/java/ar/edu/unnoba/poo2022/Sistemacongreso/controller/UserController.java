@@ -31,8 +31,8 @@ public class UserController {
  //este comentario es para ver que onda el commit jajaja xd saludis
     @PostMapping
     public String create(@ModelAttribute Usuario usuario){
-        usuario.setApellido("");
-        usuario.setNombre("");
+        //usuario.setApellido("");
+        //usuario.setNombre("");
         userService.create(usuario);
         return "redirect:/usuarios";
     }
