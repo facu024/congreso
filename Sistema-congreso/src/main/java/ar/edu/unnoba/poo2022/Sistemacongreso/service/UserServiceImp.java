@@ -3,12 +3,17 @@ package ar.edu.unnoba.poo2022.Sistemacongreso.service;
 import ar.edu.unnoba.poo2022.Sistemacongreso.model.Usuario;
 import ar.edu.unnoba.poo2022.Sistemacongreso.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+
+
 
 import java.util.List;
 
 @Service
-public class UserServiceImp implements IUserService{
+public class UserServiceImp implements IUserService, UserDetailsService {
 
     @Autowired
     private UserRepository repository;
@@ -31,6 +36,9 @@ public class UserServiceImp implements IUserService{
             repository.deleteById(id);
         }
 
-
+    @Override
+    public UserDetails loadUserByUsername(String usuario) throws UsernameNotFoundException {
+        return (UserDetails) repository.findByEmail(usuario);
     }
+}
 
