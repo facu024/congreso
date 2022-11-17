@@ -2,35 +2,15 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
-  <title>Nuevo Usuario</title>
-  <link rel="stylesheet" href="/templateRegistroUsuario/styles.css">
+  <title>Title</title>
 </head>
 <body>
-<h1>Registrar nuevo usuario</h1>
-<div>
-
-  <!--/*@thymesVar id="usuario" type=""*/-->
-  <form action="#" th:action="@{/usuarios}" th:object="${usuario}" method="post">
-    <label> Email:
-      <input type="email" th:field="*{email}" placeholder="example@gmail.com"/>
-    </label>
-    <br>
-    <br>
-    <label for="lblPass">Contraseña:</label>
-    <input  id="lblPass"type="password" th:field="*{password} " placeholder="Contraseña"/>
-    <br>
-    <br>
-    <label for="lblNombre">Nombre:</label>
-    <input id="lblNombre" type="text" th:field="*{nombre}" placeholder="Nombre"/>
-    <br>
-    <br>
-    <label for="lblApellido">Apellido</label>
-    <input id="lblApellido" type="text" th:field="*{apellido}" placeholder="Apellido"/>
-    <br>
-    <br>
-    <button type="submit" name="nuevousuario">Crear</button>
-  </form>
-</div>
+<div>New User</div>
+<form action="#" th:action="@{/usuarios}" th:object="${usuario}" method="post">
+  <input type="text" th:field="*{email}"/>
+  <input type="password" th:field="*{password}"/>
+  <button type="submit" name="newUser">Create</button>
+</form>
 
 </body>
 </html>

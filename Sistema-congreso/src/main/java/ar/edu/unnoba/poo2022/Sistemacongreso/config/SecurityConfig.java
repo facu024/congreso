@@ -29,24 +29,21 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-                .userDetailsService(userDetailsService)
                 .authorizeHttpRequests((requests) -> requests
-                        //la primer linea permite contenido estatico (estilos)
-                        .antMatchers("/webjars/**", "/resources/**", "/resources/static/**").permitAll()
-                        //  tanto  "/"  como  "/usuarios/new  son la raiz de la app, esta permitida para cualquier
-                        //usuario independientemente de si se logueo o no
+                        .antMatchers("/webjars/**", "/resources/**", "/css/**").permitAll()
                         .antMatchers("/","/usuarios/new").permitAll()
-                        //para /usuarios mientras vaya por post va a ser permitido para todos
-                        //si barra user se mostraria por get, va a listar todos los usuarios del sistema (falla de seguridad)
                         .antMatchers(HttpMethod.POST,"/usuarios").permitAll()
-                        .anyRequest().hasAuthority("ROLE_USER")
-                        //anyRequest().authenticated()
+                        .anyRequest().authenticated()
+                        //.antMatchers("/").permitAll()
+                        //.anyRequest().hasAuthority("ROLE_USER")
+
                 )
                 .formLogin((form) -> form
                         .loginPage("/login")
                         .permitAll()
                 )
                 .logout((logout) -> logout.permitAll());
+
         return http.build();
     }
 

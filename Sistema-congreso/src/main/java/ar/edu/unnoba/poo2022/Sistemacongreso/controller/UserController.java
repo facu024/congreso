@@ -3,11 +3,11 @@ package ar.edu.unnoba.poo2022.Sistemacongreso.controller;
 import ar.edu.unnoba.poo2022.Sistemacongreso.model.Usuario;
 import ar.edu.unnoba.poo2022.Sistemacongreso.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.neo4j.Neo4jProperties;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
 
@@ -31,6 +31,8 @@ public class UserController {
 
     @PostMapping
     public String create(@ModelAttribute Usuario usuario){
+        usuario.setApellido("");
+        usuario.setNombre("");
         userService.create(usuario);
         return "redirect:/usuarios";
     }
@@ -38,17 +40,20 @@ public class UserController {
     @GetMapping
     public String index(Model model, Authentication authentication){
         Usuario usuarioSesion = (Usuario)authentication.getPrincipal();
-        model.addAttribute("usuarioSesion",usuarioSesion);
         List<Usuario> usuarios = userService.getAll();
         model.addAttribute("usuarios",usuarios);
-        return "usuarios/index";
+        model.addAttribute("usuarioSesion",usuarioSesion);
+        return "/usuarios/index";
     }
 
+
     @GetMapping("/delete/{id}")
-    public String delete(@PathVariable("id") Long id, Authentication authentication){
-        Usuario usuarioSesion = (Usuario)authentication.getPrincipal();
-        //la mejor manera de lograr esto seria mediante capa de servicio
-        if (usuarioSesion.getId().equals(id)){
+    public String delete(@PathVariable("id") Long id,
+                         Authentication authentication,
+                         RedirectAttributes redirectAttributes){
+        Usuario usuarioSesion = (Usuario) authentication.getPrincipal();
+        if(usuarioSesion.getId().equals(id)){
+            redirectAttributes.addFlashAttribute("message","No te podes borrar");
             return "redirect:/usuarios";
         }
         userService.delete(id);
