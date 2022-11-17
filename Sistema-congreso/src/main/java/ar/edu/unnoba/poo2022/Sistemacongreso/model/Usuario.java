@@ -4,14 +4,13 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 
-
 import javax.persistence.*;
 import java.util.Arrays;
 import java.util.Collection;
 
 @Entity
 @Table(name="Usarios")
-public class Usuario {
+public class Usuario  implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -37,6 +36,11 @@ public class Usuario {
 
     public String getPassword() {
         return password;
+    }
+
+    @Override
+    public String getUsername() {
+        return null;
     }
 
     public void setPassword(String password) {

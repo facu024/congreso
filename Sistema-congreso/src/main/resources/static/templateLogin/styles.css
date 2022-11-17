@@ -4,9 +4,7 @@ body{
     padding: 0;
     margin: 0;
     background-color: lightblue;
-    /* background: url(https://www.todofondos.net/wp-content/uploads/1920x1200-CIELO-NUBES-FONDO-DE-PANTALLA-HD.jpg); */
-    background-repeat: no-repeat;
-    background-size: cover;
+
 }
 
 .login{

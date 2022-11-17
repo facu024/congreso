@@ -6,11 +6,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-
-
 import java.util.List;
+
+/**
+ * Created by jpgm on 20/10/20.
+ */
 
 @Service
 public class UserServiceImp implements IUserService, UserDetailsService {
@@ -20,25 +23,26 @@ public class UserServiceImp implements IUserService, UserDetailsService {
 
     @Override
     public Usuario create(Usuario usuario) {
-        if (repository.findByEmail(usuario.getEmail()) == null) {
+        if(repository.findByEmail(usuario.getEmail())==null){
+            usuario.setPassword(new BCryptPasswordEncoder().encode(usuario.getPassword()));
             usuario = repository.save(usuario);
         }
         return usuario;
     }
 
-        @Override
-        public List<Usuario> getAll() {
-            return repository.findAll();
-        }
-
-        @Override
-        public void delete(Long id) {
-            repository.deleteById(id);
-        }
+    @Override
+    public List<Usuario> getAll() {
+        return repository.findAll();
+    }
 
     @Override
-    public UserDetails loadUserByUsername(String usuario) throws UsernameNotFoundException {
-        return (UserDetails) repository.findByEmail(usuario);
+    public void delete(Long id) {
+        repository.deleteById(id);
+    }
+
+
+    @Override
+    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+        return (UserDetails)repository.findByEmail(email);
     }
 }
-
