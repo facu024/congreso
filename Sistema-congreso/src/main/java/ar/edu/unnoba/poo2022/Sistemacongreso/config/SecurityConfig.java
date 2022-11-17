@@ -3,7 +3,6 @@ import ar.edu.unnoba.poo2022.Sistemacongreso.service.UserServiceImp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.core.annotation.Order;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
@@ -17,7 +16,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 @Configuration
-@Order(2)
+@EnableWebSecurity
 public class SecurityConfig {
 
     private UserServiceImp userDetailsService;
@@ -51,20 +50,22 @@ public class SecurityConfig {
         return http.build();
     }
 
-    public UserDetailsService userDetailsService(){
-        return userDetailsService();
+    @Bean
+    public UserDetailsService userDetailsService() {
+        return this.userDetailsService;
     }
     @Bean
     public PasswordEncoder passwordEncoder(){
         return new BCryptPasswordEncoder();
     }
-    public DaoAuthenticationProvider authenticationProvider(){
+    @Bean
+    public DaoAuthenticationProvider authenticationProvider() {
         DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
+
         authProvider.setUserDetailsService(userDetailsService);
         authProvider.setPasswordEncoder(passwordEncoder());
+
         return authProvider;
     }
-
-
 }
 
