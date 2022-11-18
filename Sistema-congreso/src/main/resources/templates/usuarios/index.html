@@ -18,12 +18,12 @@
     </tr>
     </thead>
     <tbody>
-    <tr th:each="usuarios : ${usuarios}">
-        <td th:text="${usuarios.getEmail()}"></td>
+    <tr th:each="user : ${usuarios}">
+        <td th:text="${user.getEmail()}"></td>
         <td><a class="badge badge-primary" th:href="@{/usuarios/delete/{id}(id=${user.id})}">Eliminar</a></td>
     </tr>
     </tbody>
 </table>
-<a class="badge badge-primary" th:href="@{/usuarios/new}">New User</a>
+<a class="badge badge-primary" th:href="@{/user/new}">New User</a>
 </body>
 </html>

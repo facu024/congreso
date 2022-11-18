@@ -31,7 +31,7 @@ public class SecurityConfig {
         http
                 .authorizeHttpRequests((requests) -> requests
                         .antMatchers("/webjars/**", "/resources/**", "/css/**").permitAll()
-                        .antMatchers("/","/usuarios/new").permitAll()
+                        .antMatchers("/usuarios/new").permitAll()
                         .antMatchers(HttpMethod.POST,"/usuarios").permitAll()
                         .anyRequest().authenticated()
                         //.antMatchers("/").permitAll()
