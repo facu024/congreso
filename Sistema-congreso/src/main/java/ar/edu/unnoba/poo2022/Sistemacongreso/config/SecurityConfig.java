@@ -42,10 +42,15 @@ public class SecurityConfig {
                         .loginPage("/login")
                         .permitAll()
                 )
-                .logout((logout) -> logout.permitAll());
+                .logout((logout) -> logout
+                        .logoutUrl("/usuarios/logout")
+                        .logoutSuccessUrl("/usuarios/login")
+                        .permitAll()
+                );
 
         return http.build();
     }
+
 
     @Bean
     public UserDetailsService userDetailsService() {

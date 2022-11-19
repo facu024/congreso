@@ -6,11 +6,22 @@
   <link rel="stylesheet" href="/templateRegistroUsuario/styles.css">
 </head>
 <body>
-<div>New User</div>
+<div>Nuevo Usuario</div>
 <form action="#" th:action="@{/usuarios}" th:object="${usuario}" method="post">
-  <input type="text" th:field="*{email}"/>
-  <input type="password" th:field="*{password}"/>
-  <button type="submit" name="newUser">Create</button>
+  <input type="text" th:field="*{email}" placeholder="email" required/>
+  <br>
+  <br>
+  <input type="password" th:field="*{password}" placeholder="contraseña" required/>
+  <br>
+  <br>
+  <input type="text" th:field="*{nombre}" placeholder="nombre" required/>
+  <br>
+  <br>
+  <input type="text" th:field="*{apellido}" placeholder="apellido" required/>
+  <br>
+  <br>
+
+  <button type="submit" name="newUser">Crear</button>
 </form>
 
 </body>

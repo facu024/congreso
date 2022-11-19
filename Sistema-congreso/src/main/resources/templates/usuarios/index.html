@@ -3,13 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="/templateRegistroUsuario/styles.css">
 </head>
 <body>
-<div>Hola usuario <span th:text="${usuarioSesion.getEmail()}"></span>!!!</div>
-<!--<div th:if="${message}">
+<div><h1>Hola <span th:text="${usuarioSesion.getEmail()}"</h1>></span>!</div>
+<div th:if="${message}">
     <span th:text="${message}"></span>
-</div>-->
-<div>Users List</div>
+</div>
+<div>Lista de usuarios
 <table class="table table-dark">
     <thead>
     <tr>
@@ -24,6 +25,13 @@
     </tr>
     </tbody>
 </table>
-<a class="badge badge-primary" th:href="@{/user/new}">New User</a>
+<a class="badge badge-primary" th:href="@{/usuarios/new}">Agregar nuevo usuario</a>
+</div>
+<div>
+    <form action="#" th:action="@{/logout}" th:method="POST">
+
+        <input  type="submit" value="logout"/>
+    </form>
+</div>
 </body>
 </html>

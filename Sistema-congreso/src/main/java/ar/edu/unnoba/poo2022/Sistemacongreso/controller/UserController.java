@@ -31,8 +31,6 @@ public class UserController {
 
     @PostMapping
     public String create(@ModelAttribute Usuario usuario){
-        usuario.setApellido("");
-        usuario.setNombre("");
         userService.create(usuario);
         return "redirect:/usuarios";
     }
@@ -43,7 +41,7 @@ public class UserController {
         List<Usuario> usuarios = userService.getAll();
         model.addAttribute("usuarios",usuarios);
         model.addAttribute("usuarioSesion",usuarioSesion);
-        return "/usuarios/index";
+        return "usuarios/index";
     }
 
 
