@@ -4,8 +4,38 @@ body{
 div{
     align-content: center;
     text-align: center;
+    font-size: 22px;
 }
-table{
+p{
+    font-size: 20px;
+}
+.boton{
+    font-size: 20px;
+}
+.mensaje{
+    background-color: red;
+    border-radius: 2%;
+
+}
+.tablita{
+    height: 200px;
+    width: 500px;
     align-content: center;
     align-items: center;
+    width: 100px;
+    margin: 0 auto;
+    border: 2px solid black ;
+    table-layout: fixed;
+    width: 250px;
 }
+
+tr, td{
+    border: 1px solid black;
+    width: 100px;
+    word-wrap: break-word;
+}
+
+a{
+    text-decoration: none;
+}
+

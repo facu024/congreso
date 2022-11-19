@@ -7,14 +7,14 @@
 </head>
 <body>
 <div><h1>Hola <span th:text="${usuarioSesion.getEmail()}"</h1>></span>!</div>
-<div th:if="${message}">
+<div class="mensaje"    th:if="${message}">
     <span th:text="${message}"></span>
 </div>
-<div>Lista de usuarios
-<table class="table table-dark">
+<div><h2>Lista de usuarios</h2>
+<table class="table table-dark tablita">
     <thead>
     <tr>
-        <th>Username</th>
+        <th> <p>Nombre de usuario</p></th>
         <th></th>
     </tr>
     </thead>
@@ -25,12 +25,15 @@
     </tr>
     </tbody>
 </table>
+    <br>
+    <br>
 <a class="badge badge-primary" th:href="@{/usuarios/new}">Agregar nuevo usuario</a>
 </div>
-<div>
-    <form action="#" th:action="@{/logout}" th:method="POST">
-
-        <input  type="submit" value="logout"/>
+<div style="display: block;horiz-align: right;">
+    <br>
+    <br>
+    <form action="#" th:action="@{/logout}" th:method="post">
+        <input class="boton" type="submit" value="Cerrar sesión" />
     </form>
 </div>
 </body>
