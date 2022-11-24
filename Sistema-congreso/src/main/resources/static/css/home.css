@@ -1,0 +1,46 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    background-color: white;
+}
+
+
+#navbarMod{
+    background-color: rgb(69,163,209);
+}
+
+
+.contenido {
+    width:100%;
+    min-height: 250px;
+    text-align: center;
+    top: 40%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%, -35%);
+    border-radius: 1%;
+
+}
+
+.contenido p{
+    font-family: 'Roboto medium';
+    font-size: 100px;
+    font-weight: bold;
+    color: rgb(69,163,209);
+    margin: 1 0;
+
+}
+
+
+.contenido a{
+    font-family: 'Roboto medium';
+    color: white;
+    text-decoration: none;
+    background-color: rgb(69,163,209);
+    padding: 4px 25px;
+    border-radius: 30px;
+    font-size: 40px;
+    margin: 10px;
+}

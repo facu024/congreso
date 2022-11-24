@@ -29,17 +29,18 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-                .authorizeHttpRequests((requests) -> requests
-                        .antMatchers("/webjars/**", "/resources/**", "/css/**").permitAll()
-                        .antMatchers("/usuarios/new").permitAll()
-                        .antMatchers(HttpMethod.POST,"/usuarios").permitAll()
-                        .anyRequest().authenticated()
-                        //.antMatchers("/").permitAll()
-                        //.anyRequest().hasAuthority("ROLE_USER")
+                .authorizeHttpRequests()
+                .antMatchers("/","/home").permitAll()
+                .antMatchers("/webjars/**", "/resources/**", "/css/**").permitAll()
+                .antMatchers("/usuarios/new").permitAll()
+                .antMatchers(HttpMethod.POST,"/usuarios").permitAll()
+                .anyRequest().authenticated()
+                //.antMatchers("/").permitAll()
+                //.anyRequest().hasAuthority("ROLE_USER")
 
-                )
+                .and()
                 .formLogin((form) -> form
-                        .loginPage("/login")
+                        .loginPage("/login").defaultSuccessUrl("/usuarios", true)
                         .permitAll()
                 )
                 .logout((logout) -> logout.permitAll()
