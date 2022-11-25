@@ -1,5 +1,7 @@
 package ar.edu.unnoba.poo2022.Sistemacongreso.config;
 import ar.edu.unnoba.poo2022.Sistemacongreso.service.UserServiceImp;
+import io.micrometer.core.ipc.http.HttpSender.Request;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -28,19 +30,21 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        http
-                .authorizeHttpRequests()
-                .antMatchers("/","/home").permitAll()
-                .antMatchers("/webjars/**", "/resources/**", "/css/**").permitAll()
-                .antMatchers("/usuarios/new").permitAll()
-                .antMatchers(HttpMethod.POST,"/usuarios").permitAll()
-                .anyRequest().authenticated()
-                //.antMatchers("/").permitAll()
-                //.anyRequest().hasAuthority("ROLE_USER")
-
-                .and()
+        http    
+                .userDetailsService(userDetailsService)
+                .authorizeHttpRequests((Requests) -> Requests
+                               .antMatchers("/webjars/**", "/resources/**", "/css/**").permitAll()
+                               .antMatchers("/","/home","/usuarios/new").permitAll()
+                               .anyRequest().hasAuthority("ROLE_USER")
+                )
+                // .authorizeHttpRequests()
+                // .antMatchers("/","/home").permitAll()
+                // .antMatchers("/usuarios/new").permitAll()
+                // .antMatchers(HttpMethod.POST,"/usuarios").permitAll()
+                // .anyRequest().authenticated()   
+                
                 .formLogin((form) -> form
-                        .loginPage("/login").defaultSuccessUrl("/usuarios", true)
+                        .loginPage("/login").defaultSuccessUrl("/principal", true)
                         .permitAll()
                 )
                 .logout((logout) -> logout.permitAll()

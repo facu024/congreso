@@ -39,8 +39,10 @@
 <div class="contenido">
   <p>Congresos UNNOBA</p>
 
-  <a th:href="@{/usuarios/new}">Registrate</a>
-  <a th:href="@{/login}">Login</a>
+ 
+  <a class="btn btn-primary" th:href="@{/login}">Ingresar como usuario</a>
+  <a class="btn btn-primary" th:href="@{/admins/new}">Ingresar como admin</a>
+
 </div>
 <footer th:fragment="footer" class="bg-dark text-white text-center
             fixed-bottom text">

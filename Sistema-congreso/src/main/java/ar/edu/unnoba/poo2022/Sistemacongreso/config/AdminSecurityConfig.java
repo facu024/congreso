@@ -26,21 +26,21 @@ public class AdminSecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-                .antMatcher("/admin/**")
+                .antMatcher("/admins/**")
                 .userDetailsService(userDetailsService)
                 .authorizeHttpRequests((request) -> request
                         .anyRequest().hasAuthority("ROLE_ADMIN")
                 )
                 .formLogin((form) -> form
-                        .loginPage("/admin/login")
+                        .loginPage("/admins/login")
                         .usernameParameter("email")
-                        .loginProcessingUrl("/admin/login")
-                        .defaultSuccessUrl("/admin/home")
+                        .loginProcessingUrl("/admins/login")
+                        .defaultSuccessUrl("/admins/home")
                         .permitAll()
                 )
                 .logout((logout) -> logout
-                        .logoutUrl("/admin/logout")
-                        .logoutSuccessUrl("/admin/login")
+                        .logoutUrl("/admins/logout")
+                        .logoutSuccessUrl("/admins/login")
                         .permitAll()
                 );
         return http.build();

@@ -27,7 +27,7 @@
             <a class="nav-link " th:href="@{/home}">Inicio</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" th:href="@{/Usuarios}">Usuarios</a>
+            <a class="nav-link" th:href="@{/usuarios}">Usuarios</a>
           </li>
         </ul>
       </div>
@@ -36,7 +36,7 @@
 </header>
 <div class="container">
   <div class="card p-5">
-    <div class="card-header bg-dark"></div>
+    <div class="card-header bg-primary"></div>
     <div class="card-body">
       <form action="#" th:action="@{/usuarios}" th:object="${usuario}"
             method="post">
@@ -68,9 +68,9 @@
                  placeholder="Contraseña" required>
           <small></small>
         </div>
-        <div class="card-footer bg-dark">
-          <button type="submit" name="newUser" class="btn btn-primary">Crear</button>
-          <a th:href="@{/usuarios}" class="btn btn-primary">Cancelar</a>
+        <div class="card-footer bg-primary">
+          <button type="submit" name="newUser" class="btn btn-light">Crear</button>
+          <a th:href="@{/usuarios}" class="btn btn-light">Cancelar</a>
         </div>
       </form>
     </div>
