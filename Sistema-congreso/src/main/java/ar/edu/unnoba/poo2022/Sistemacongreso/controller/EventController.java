@@ -18,17 +18,18 @@ public class EventController {
 
 
     @Autowired
-    public EventController(IEventService eventService) {this.eventService=eventService;}
+    public EventController(IEventService eventService) {this.eventService= eventService;}
 
+    @SuppressWarnings("SpringMVCViewInspection")
     @GetMapping("/new")
     public String nuevoEvento (Model model){
         model.addAttribute("evento", new Evento());
-        return "eventos/new";
+        return "/admins/eventos/new";
     }
 
     @PostMapping
     public String create(@ModelAttribute Evento evento){
         eventService.create(evento);
-        return "redirect:/eventos";
+        return "redirect:/admin/eventos";
     }
 }
