@@ -1,23 +1,22 @@
 package ar.edu.unnoba.poo2022.Sistemacongreso.config;
 import ar.edu.unnoba.poo2022.Sistemacongreso.service.UserServiceImp;
-import io.micrometer.core.ipc.http.HttpSender.Request;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.HttpMethod;
-import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.core.annotation.Order;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
-import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
-import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+
+
+
+
 @Configuration
+@Order(2)
 @EnableWebSecurity
 public class SecurityConfig {
 
@@ -29,28 +28,20 @@ public class SecurityConfig {
     }
 
     @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        http    
-                .userDetailsService(userDetailsService)
-                .authorizeHttpRequests((Requests) -> Requests
-                               .antMatchers("/webjars/**", "/resources/**", "/css/**").permitAll()
-                               .antMatchers("/","/home","/usuarios/new").permitAll()
-                               .anyRequest().hasAuthority("ROLE_USER")
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {   
+        http
+                .authorizeHttpRequests((requests) -> requests
+                .antMatchers("/webjars/**", "/resources/**","/css/**").permitAll()
+                .antMatchers("/").permitAll()
+                .anyRequest().authenticated()
                 )
-                // .authorizeHttpRequests()
-                // .antMatchers("/","/home").permitAll()
-                // .antMatchers("/usuarios/new").permitAll()
-                // .antMatchers(HttpMethod.POST,"/usuarios").permitAll()
-                // .anyRequest().authenticated()   
-                
                 .formLogin((form) -> form
-                        .loginPage("/login").defaultSuccessUrl("/principal", true)
-                        .permitAll()
+                .loginPage("/login")
+                .defaultSuccessUrl("/usuarios")
+                .permitAll()
                 )
-                .logout((logout) -> logout.permitAll()
-                );
-
-        return http.build();
+                .logout((logout) -> logout.permitAll());
+        return http.build(); 
     }
 
 

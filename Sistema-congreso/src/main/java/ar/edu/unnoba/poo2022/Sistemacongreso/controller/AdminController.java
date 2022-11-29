@@ -8,6 +8,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+
 
 @Controller
 @RequestMapping("/admins")
@@ -25,6 +28,18 @@ public class AdminController {
         model.addAttribute("admin", new Admin());
         return "admins/new";
     }
+    @GetMapping("/login")
+    public String doLogin(Model model) {
+        return "admins/login";
+    }
+
+    @PostMapping("/login")
+    public String inico(Model model) {
+        List<Admin> admins = adminService.getAll();
+        model.addAttribute("admins", admins);
+        return "redirect:/admins";
+    }
+    
 
     @GetMapping
     public String index(Model model) {
