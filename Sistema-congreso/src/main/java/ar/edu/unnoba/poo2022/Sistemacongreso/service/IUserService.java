@@ -8,7 +8,6 @@ public interface IUserService {
 
     public Usuario create(Usuario usuario);
 
-
     public List<Usuario> getAll();
 
     public void delete(Long id);
