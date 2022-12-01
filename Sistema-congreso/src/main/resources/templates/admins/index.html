@@ -13,31 +13,37 @@
     <link rel="stylesheet" href="/css/index.css">
 </head>
 <body>
-<header th:fragment="header">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">UNNOBA</a>
-            <button class="navbar-toggler" type="button"
-                    data-bs-toggle="collapse"
-                    data-bs-target="#navbarSupportedContent"
-                    aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse"
-                 id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link " th:href="@{/home}">Inicio</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" th:href="@{/usuarios}">Usuarios</a>
-                    </li>
-                </ul>
+    <header th:fragment="header">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">UNNOBA</a>
+                <button class="navbar-toggler" type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#navbarSupportedContent"
+                        aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse"
+                     id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link " th:href="@{/home}">Inicio</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" th:href="@{/usuarios}">Usuarios</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" th:href="@{/admins}">Administradores</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" th:href="@{/eventos}">Eventos</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
-        </div>
-    </nav>
-</header>
+        </nav>
+    </header>
 <div class="container">
     <!-- <div>
         <h1>
@@ -49,8 +55,15 @@
         <span th:text="${message}"></span>
     </div>
     <div>
-        <h2>Lista de ADMINISTRADORES</h2>
+        
         <div class="container ">
+            <h2>Lista de ADMINISTRADORES</h2>
+            <div class="botones">
+                <form action="#" th:action="@{/logout}" th:method="post">
+                    <a class="btn btn-primary" th:href="@{/admins/new}">Agregar administrador</a>
+                    <input class="btn btn-primary"  type="submit" value="Cerrar sesión"/>
+                </form>
+            </div>
             <div class="row">
                 <div class="col">
                     <table class="table table-primary">
@@ -69,7 +82,7 @@
                             <td th:text="${admin.getNombre()}"></td>
                             <td th:text="${admin.getApellido()}"></td>
                             <td align="center">
-                                <a class="badge badge-primary"
+                                <a class=" btn btn-danger"
                                    id="btnDelete"
                                    th:href="@{/admins/delete/{id}(id=${admin.id})}"
                                    onclick="return confirm('Vas a eliminar este usuario. ¿Borrar?');">
@@ -86,12 +99,7 @@
         </div>
 
     </div>
-    <div class="botones">
-        <form action="#" th:action="@{/logout}" th:method="post">
-            <a class="btn btn-primary" th:href="@{/admins/new}">Agregar administrador</a>
-            <input class="btn btn-primary"  type="submit" value="Cerrar sesión"/>
-        </form>
-    </div>
+
 
 </div>
 <footer th:fragment="footer" class="bg-dark text-white text-center

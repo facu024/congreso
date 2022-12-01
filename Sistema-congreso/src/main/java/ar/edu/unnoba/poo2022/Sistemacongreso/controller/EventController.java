@@ -50,7 +50,7 @@ public class EventController {
     public String info(@PathVariable("id") Long id,Model model) {
         Optional<Evento> evento = eventService.info(id);
         model.addAttribute("evento",evento);
-        return "redirect:/info";
+        return "/usuarios/eventos/info";
     }
 
 }

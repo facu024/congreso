@@ -11,29 +11,37 @@
 
 </head>
 <body>
-<header th:fragment="header">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">UNNOBA</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+    <header th:fragment="header">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">UNNOBA</a>
+                <button class="navbar-toggler" type="button"
+                    data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent"
-                    aria-controls="navbarSupportedContent" aria-expanded="false"
-                    aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link " th:href="@{/home}">Inicio</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" th:href="@{/usuarios}">Usuarios</a>
-                    </li>
-                </ul>
+                    aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse"
+                    id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link " th:href="@{/home}">Inicio</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" th:href="@{/usuarios}">Usuarios</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" th:href="@{/admins}">Administradores</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" th:href="@{/eventos}">Eventos</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
-        </div>
-    </nav>
-</header>
+        </nav>
+    </header>
 <div class="container">
     <div class="card p-5">
         <div class="card-header bg-primary"></div>
@@ -55,23 +63,23 @@
                     <small></small>
                 </div>
                 <div class="form-group row">
-                    <label class="col-md-2" for="fecha">fechaHoraDesde:</label>
+                    <label class="col-md-2" for="fecha">Fecha Inicio:</label>
                     <input type="text" th:field="*{fechaHoraDesde}" class="form-control
-                form-control-sm col-md-6 " id="fecha"
+                        form-control-sm col-md-6 " id="fecha"
                            placeholder="fechaHoraDesde" required>
                     <small></small>
                 </div>
                 <div class="form-group row">
-                    <label class="col-md-2" for="fechaHasta">fechaHoraHasta:</label>
+                    <label class="col-md-2" for="fechaHasta">Fecha Fin:</label>
                     <input type="text" th:field="*{fechaHoraHasta}" class="form-control
-                form-control-sm col-md-6 " id="fechaHasta"
+                        form-control-sm col-md-6 " id="fechaHasta"
                            placeholder="fechaHoraHasta" required>
                     <small></small>
                 </div>
 
                 <div class="card-footer bg-primary">
                     <button type="submit" name="nuevoEvento" class="btn btn-light">Crear</button>
-                    <a th:href="@{/usuarios}" class="btn btn-light">Cancelar</a>
+                    <a th:href="@{/eventos}" class="btn btn-light">Cancelar</a>
                 </div>
             </form>
         </div>

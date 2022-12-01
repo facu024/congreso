@@ -5,52 +5,15 @@ h1, h2{
     text-align: center;
 }
 
-.botonAgregar{
-    color: white;
 
-    text-decoration: none;
-    margin-bottom: 1rem;
-    margin-top: 0;
-    font-family: sans-serif;
-    font-size: 16px;
-    background-color: rgb(69,96,172);
-    border: 1px solid rgb(69,96,172);
-    border-radius: 3px;
-    font-weight: bold;
-    padding: 5px;
-    margin-right: 5vh;
-}
-.botor{
-    color: white;
-    border: 1px solid rgb(69,96,172);
-    height:  29px;
-    border-radius: 3px;
-    background-color: rgb(69,96,172);
-    transition: background-color .5s;
-    font-weight: bold;
-
-    margin-left: 5vh;
-
-}
-.botor:hover{
-    background-color: blue ;
-
-}
-
-.botonAgregar:hover{
-    color: white;
-    background-color: blue ;
-}
-
-
-#btnDelete{
+/* #btnDelete{
     text-decoration: none;
     background-color: red;
     border-radius: 5px;
     font-size: 12px;
     border: 1px solid black ;
     color: white;
-}
+} */
 /* #btnEdit{
     text-decoration: none;
     background-color: green;
@@ -62,5 +25,6 @@ h1, h2{
 
 .botones{
     text-align: center;
+    padding: 20px;
 
 }

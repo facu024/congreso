@@ -36,6 +36,9 @@
                     <li class="nav-item">
                         <a class="nav-link" th:href="@{/admins}">Administradores</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/eventos}">Eventos</a>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -52,8 +55,15 @@
         <span th:text="${message}"></span>
     </div>
     <div>
-        <h2>Lista de usuarios</h2>
+        
         <div class="container ">
+            <h2>Lista de usuarios</h2>
+            <div class="botones">
+                <form action="#" th:action="@{/logout}" th:method="post">
+                    <a class="btn btn-primary" th:href="@{/usuarios/new}">Agregar nuevo usuario</a>
+                    <input class="btn btn-primary"  type="submit" value="Cerrar sesión"/>
+                </form>
+            </div>
             <div class="row">
                 <div class="col">
                     <table class="table table-primary">
@@ -72,7 +82,7 @@
                             <td th:text="${user.getNombre()}"></td>
                             <td th:text="${user.getApellido()}"></td>
                             <td align="center">
-                                <a class="badge badge-primary"
+                                <a class=" btn btn-danger"
                                    id="btnDelete"
                                    th:href="@{/usuarios/delete/{id}(id=${user.id})}"
                                    onclick="return confirm('Vas a eliminar este usuario. ¿Borrar?');">
@@ -87,13 +97,6 @@
                 </div>
             </div>
         </div>
-
-    </div>
-    <div class="botones">
-        <form action="#" th:action="@{/logout}" th:method="post">
-            <a class="btn btn-primary" th:href="@{/usuarios/new}">Agregar nuevo usuario</a>
-            <input class="btn btn-primary"  type="submit" value="Cerrar sesión"/>
-        </form>
     </div>
 
 </div>
