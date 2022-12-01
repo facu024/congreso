@@ -1,8 +1,10 @@
 package ar.edu.unnoba.poo2022.Sistemacongreso.controller;
 
 import ar.edu.unnoba.poo2022.Sistemacongreso.model.Evento;
+import ar.edu.unnoba.poo2022.Sistemacongreso.model.Usuario;
 import ar.edu.unnoba.poo2022.Sistemacongreso.service.IEventService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,7 +12,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-@RequestMapping("eventos")
+import java.util.List;
+
+@RequestMapping("/eventos")
 @Controller
 public class EventController {
 
@@ -24,12 +28,19 @@ public class EventController {
     @GetMapping("/new")
     public String nuevoEvento (Model model){
         model.addAttribute("evento", new Evento());
-        return "/admins/eventos/new";
+        return "/usuarios/eventos/new";
     }
 
     @PostMapping
     public String create(@ModelAttribute Evento evento){
         eventService.create(evento);
-        return "redirect:/admin/eventos";
+        return "redirect:/usuarios/eventos";
+    }
+    @GetMapping
+    public String index(Model model, Authentication authentication){
+        List<Evento> eventos = eventService.getAll();
+        model.addAttribute("eventos",eventos);
+       // model.addAttribute("usuarioSesion",usuarioSesion);
+        return "usuarios/eventos/index";
     }
 }
