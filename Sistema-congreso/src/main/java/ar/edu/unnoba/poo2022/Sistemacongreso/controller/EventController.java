@@ -28,19 +28,19 @@ public class EventController {
     @GetMapping("/new")
     public String nuevoEvento (Model model){
         model.addAttribute("evento", new Evento());
-        return "/usuarios/eventos/new";
+        return "usuarios/eventos/new";
     }
 
     @PostMapping
     public String create(@ModelAttribute Evento evento){
         eventService.create(evento);
-        return "redirect:/usuarios/eventos";
+        return "redirect:/eventos";
     }
     @GetMapping
-    public String index(Model model, Authentication authentication){
+    public String index(Model model){
         List<Evento> eventos = eventService.getAll();
         model.addAttribute("eventos",eventos);
-       // model.addAttribute("usuarioSesion",usuarioSesion);
+
         return "usuarios/eventos/index";
     }
 }

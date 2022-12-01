@@ -28,7 +28,7 @@ public class EventConfig {
                 .userDetailsService(userDetailsService)
                 .authorizeHttpRequests((Requests) -> Requests
                                 .antMatchers("/webjars/**", "/resources/**", "/css/**").permitAll()
-                                .antMatchers("/","/home","/eventos/**").permitAll()
+                                .antMatchers("/").permitAll()
                 );
         return http.build();
 }
