@@ -1,16 +1,14 @@
 package ar.edu.unnoba.poo2022.Sistemacongreso.controller;
 
 import ar.edu.unnoba.poo2022.Sistemacongreso.model.Evento;
-import ar.edu.unnoba.poo2022.Sistemacongreso.model.Usuario;
 import ar.edu.unnoba.poo2022.Sistemacongreso.service.IEventService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
+import java.util.Optional;
 
 @RequestMapping("/eventos")
 @Controller
@@ -46,6 +44,13 @@ public class EventController {
 
         eventService.delete(id);
         return "redirect:/eventos";
+    }
+
+    @GetMapping("/info/{id}")
+    public String info(@PathVariable("id") Long id,Model model) {
+        Optional<Evento> evento = eventService.info(id);
+        model.addAttribute("evento",evento);
+        return "redirect:/info";
     }
 
 }

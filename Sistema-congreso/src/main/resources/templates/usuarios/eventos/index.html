@@ -73,6 +73,14 @@
                                     Eliminar
                                 </a>
 
+                            <td align="center">
+                                <a class="badge badge-primary"
+                                   id="btnDelete"
+                                   th:href="@{/eventos/info/{id}(id=${evento.id})}"
+                                   onclick="return confirm('Vas a eliminar este evento. ¿Borrar?');">
+                                    info
+                                </a>
+
 
 
                         </tr>

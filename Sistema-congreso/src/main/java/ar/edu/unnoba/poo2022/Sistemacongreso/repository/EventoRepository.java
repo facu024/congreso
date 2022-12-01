@@ -7,5 +7,7 @@ public interface EventoRepository extends JpaRepository<Evento,Long> {
 
     public Evento findByNombre(String nombre);
 
+    public Evento findById(Evento evento);
+
 
 }
