@@ -34,4 +34,10 @@ public class EventServiceImp implements IEventService, UserDetailsService {
     public UserDetails loadUserByUsername(String nombre) throws UsernameNotFoundException {
         return (UserDetails)repository.findByNombre(nombre);
     }
+
+    @Override
+    public void delete(Long id) {
+        repository.deleteById(id);
+    }
+
 }

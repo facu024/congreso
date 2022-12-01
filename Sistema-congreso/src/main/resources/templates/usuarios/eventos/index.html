@@ -65,6 +65,14 @@
                             <td th:text="${evento.getDescripcion()}"></td>
                             <td th:text="${evento.getFechaHoraDesde()}"></td>
                             <td th:text="${evento.getFechaHoraHasta()}"></td>
+                            <td align="center">
+                                <a class="badge badge-primary"
+                                   id="btnDelete"
+                                   th:href="@{/eventos/delete/{id}(id=${evento.id})}"
+                                   onclick="return confirm('Vas a eliminar este evento. ¿Borrar?');">
+                                    Eliminar
+                                </a>
+
 
 
                         </tr>

@@ -10,4 +10,6 @@ public interface IEventService {
     public Evento create (Evento evento);
 
     public List<Evento> getAll();
+
+    public void delete(Long id);
 }
