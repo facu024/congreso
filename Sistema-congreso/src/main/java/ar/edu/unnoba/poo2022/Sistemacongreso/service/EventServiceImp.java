@@ -40,9 +40,9 @@ public class EventServiceImp implements IEventService, UserDetailsService {
     public void delete(Long id) {
         repository.deleteById(id);
     }
-
     @Override
-    public Optional<Evento> info(Long id) {return repository.findById(id);
+    public Evento info(Long id) {
+        return repository.getReferenceById(id);
     }
 
 }
