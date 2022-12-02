@@ -14,6 +14,8 @@ public interface IEventService {
 
     public void delete(Long id);
 
+    //public Evento info(Evento evento, Long id);
 
-    public Optional<Evento> info(Long id);
+
+    Evento info(Long id);
 }

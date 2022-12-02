@@ -9,7 +9,6 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class EventServiceImp implements IEventService, UserDetailsService {
@@ -42,7 +41,13 @@ public class EventServiceImp implements IEventService, UserDetailsService {
     }
 
     @Override
-    public Optional<Evento> info(Long id) {return repository.findById(id);
+    public Evento info(Long id) {
+        return repository.getReferenceById(id);
     }
 
+
+
+
 }
+
+
