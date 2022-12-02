@@ -48,8 +48,8 @@ public class EventController {
 
     @GetMapping("/info/{id}")
     public String info(@PathVariable("id") Long id,Model model) {
-        Evento evento1 = eventService.info(id);
-        model.addAttribute("evento",evento1);
+        Optional<Evento> evento = eventService.info(id);
+        model.addAttribute("evento",evento);
         return "/usuarios/eventos/info";
     }
 
