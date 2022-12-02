@@ -8,8 +8,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
-
 @RequestMapping("/eventos")
 @Controller
 public class EventController {
@@ -41,15 +39,14 @@ public class EventController {
     }
     @GetMapping("/delete/{id}")
     public String delete(@PathVariable("id") Long id){
-
         eventService.delete(id);
         return "redirect:/eventos";
     }
 
     @GetMapping("/info/{id}")
     public String info(@PathVariable("id") Long id,Model model) {
-        Evento evento1 = eventService.info(id);
-        model.addAttribute("evento",evento1);
+        Evento evento= eventService.info(id);
+        model.addAttribute("evento",evento);
         return "/usuarios/eventos/info";
     }
 

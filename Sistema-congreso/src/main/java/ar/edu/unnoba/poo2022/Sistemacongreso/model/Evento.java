@@ -1,5 +1,7 @@
 package ar.edu.unnoba.poo2022.Sistemacongreso.model;
 
+import org.springframework.boot.convert.DataSizeUnit;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -13,15 +15,21 @@ public class Evento implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Temporal(TemporalType.TIMESTAMP)
+    @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
+    private Date fechaHoraDesde;
+    @Temporal(TemporalType.TIMESTAMP)
+    @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
+    private Date fechaHoraHasta;
+
+
+
+
 
     @Column(nullable = false)
     private String nombre;
 
-    @Column(nullable = false)
-    private Date fechaHoraDesde;
 
-    @Column(nullable = false)
-    private Date fechaHoraHasta;
 
     private String descripcion;
 

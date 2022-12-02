@@ -1,7 +1,7 @@
 package ar.edu.unnoba.poo2022.Sistemacongreso.model;
 
 import javax.persistence.*;
-import javax.xml.crypto.Data;
+
 import java.util.Date;
 
 @Entity

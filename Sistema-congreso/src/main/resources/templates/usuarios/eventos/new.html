@@ -72,19 +72,16 @@
                 </div>
                 <div class="form-group row">
                     <label class="col-md-2" for="fecha">Fecha Inicio:</label>
-                    <input type="text" th:field="*{fechaHoraDesde}" class="form-control
-                        form-control-sm col-md-6 " id="fecha"
-                           placeholder="fechaHoraDesde" required>
+                    <input type="datetime-local" th:field="*{fechaHoraDesde}" class="form-control
+                        form-control-sm col-md-6 " id="fecha"required>
                     <small></small>
                 </div>
                 <div class="form-group row">
                     <label class="col-md-2" for="fechaHasta">Fecha Fin:</label>
-                    <input type="text" th:field="*{fechaHoraHasta}" class="form-control
-                        form-control-sm col-md-6 " id="fechaHasta"
-                           placeholder="fechaHoraHasta" required>
+                    <input type="datetime-local" th:field="*{fechaHoraHasta}" class="form-control
+                        form-control-sm col-md-6 " id="fechaHasta" required>
                     <small></small>
                 </div>
-
                 <div class="card-footer bg-primary">
                     <button type="submit" name="nuevoEvento" class="btn btn-light">Crear</button>
                     <a th:href="@{/eventos}" class="btn btn-light">Cancelar</a>
