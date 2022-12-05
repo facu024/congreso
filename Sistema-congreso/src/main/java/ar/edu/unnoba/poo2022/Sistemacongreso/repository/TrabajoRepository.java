@@ -1,7 +1,7 @@
 package ar.edu.unnoba.poo2022.Sistemacongreso.repository;
 
 import ar.edu.unnoba.poo2022.Sistemacongreso.model.Trabajo;
-import ar.edu.unnoba.poo2022.Sistemacongreso.model.Usuario;
+
 
 import java.util.List;
 

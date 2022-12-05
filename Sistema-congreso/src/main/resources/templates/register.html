@@ -16,7 +16,7 @@
     <header th:fragment="header">
       <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
         <div class="container-fluid">
-          <a class="navbar-brand" href="#">UNNOBA</a>
+          <a class="navbar-brand" th:href="@{/home}">UNNOBA</a>
           <button class="navbar-toggler" type="button"
             data-bs-toggle="collapse"
             data-bs-target="#navbarSupportedContent"
@@ -27,26 +27,7 @@
           <div class="collapse navbar-collapse"
             id="navbarSupportedContent">
             <ul class="navbar-nav m-auto mb-2 mb-lg-0">
-              <li class="nav-item">
-                <a class="nav-link " th:href="@{/home}">Inicio</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" th:href="@{/usuarios}">Usuarios</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" th:href="@{/admins}">Administradores</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" th:href="@{/eventos}">Eventos</a>
-              </li>
             </ul>
-
-            <form action="#" th:action="@{/logout}" th:method="post"
-              class="d-flex">
-              <input class="btn btn-primary form-control me-2"
-                type="submit" value="Cerrar sesión"/>
-            </form>
-
 
           </div>
         </div>
@@ -54,41 +35,42 @@
     </header>
     <div class="container">
       <div class="card p-5">
-        <div class="card-header bg-primary"></div>
+        <div class="card-header bg-primary text-center text-light">
+          <h1>Registrate</h1>
+        </div>
         <div class="card-body">
-          <form action="#" th:action="@{/usuarios}" th:object="${usuario}"
+          <form action="#" th:action="@{/}" th:object="${usuario}"
             method="post">
             <div class="form-group row">
-              <label class="col-md-2" for="nombre">Nombre:</label>
+              <label class="col-md-3" for="nombre">Nombre:</label>
               <input type="text" th:field="*{nombre}" class="form-control
-                form-control-sm col-md-6 " id="nombre"
+                form-control-sm col-md-7 " id="nombre"
                 placeholder="Nombre" required>
               <small></small>
             </div>
             <div class="form-group row">
-              <label class="col-md-2" for="apellido">Apellido:</label>
+              <label class="col-md-3" for="apellido">Apellido:</label>
               <input type="text" th:field="*{apellido}" class="form-control
-                form-control-sm col-md-6 " id="apellido"
+                form-control-sm col-md-7 " id="apellido"
                 placeholder="Apellido" required>
               <small></small>
             </div>
             <div class="form-group row">
-              <label class="col-md-2" for="email">Email:</label>
+              <label class="col-md-3" for="email">Email:</label>
               <input type="email" th:field="*{email}" class="form-control
-                form-control-sm col-md-6 " id="email"
+                form-control-sm col-md-7 " id="email"
                 placeholder="Email" required>
               <small></small>
             </div>
             <div class="form-group row">
-              <label class="col-md-2" for="contraseña">Contraseña:</label>
+              <label class="col-md-3" for="contraseña">Contraseña:</label>
               <input type="password" th:field="*{password}" class="form-control
-                form-control-sm col-md-6 " id="contraseña"
+                form-control-sm col-md-7 " id="contraseña"
                 placeholder="Contraseña" required>
               <small></small>
             </div>
             <div class="card-footer bg-primary">
-              <button type="submit" name="newUser" class="btn btn-light">Crear</button>
-              <a th:href="@{/usuarios}" class="btn btn-light">Cancelar</a>
+              <button type="submit" name="newUser" class="btn btn-light ">Crear usuario</button>
             </div>
           </form>
         </div>

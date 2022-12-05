@@ -33,7 +33,7 @@ public class SecurityConfig {
                 .userDetailsService(userDetailsService)
                 .authorizeHttpRequests((requests) -> requests
                 .antMatchers("/webjars/**", "/resources/**","/css/**").permitAll()
-                .antMatchers("/", "/home").permitAll()
+                .antMatchers("/", "/home","/register").permitAll()
                 .anyRequest().authenticated()
                 )
                 .formLogin((form) -> form
