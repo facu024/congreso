@@ -1,17 +1,14 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-    <head th:fragment="head">
+    <head>
         <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1,
-            maximum-scale=1, user-scalable=no">
         <link rel="stylesheet"
             href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
             integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
             crossorigin="anonymous">
-        <title>Title</title>
-        <link rel="stylesheet" href="/css/index.css">
+        <title>Nuevo Trabajo</title>
+        <link rel="stylesheet" href="/css/new.css">
 
-        <!-- <link rel="stylesheet" href="/css/index.css"> -->
     </head>
     <body>
     </head>
@@ -30,60 +27,45 @@
                     <div class="collapse navbar-collapse"
                         id="navbarSupportedContent">
                         <ul class="navbar-nav m-auto mb-2 mb-lg-0">
+
+                           
                             <li class="nav-item">
                                 <a class="nav-link" th:href="@{/usuarios/eventos}">Eventos</a>
                             </li>
                         </ul>
 
-                        <form action="#" th:action="@{/logout}" th:method="post"
+                        <form action="#" th:action="@{/logout}"
+                            th:method="post"
                             class="d-flex">
                             <input class="btn btn-primary form-control me-2"
                                 type="submit" value="Cerrar sesión"
                                 onclick="return confirm('¿Desea cerrar sesión?');">
-                    </form>
-
+                        </form>
                     </div>
                 </div>
             </nav>
         </header>
         <div class="container">
-
-            <div>
-                <div class="container ">
-                    <h2>Lista de eventos</h2>
-                    <div class="row">
-                        <div class="col">
-                            <table class="table table-primary">
-                                <thead>
-                                    <tr>
-                                        <th scope="col">Nombre</th>
-                                        <th scope="col">fechaHoraDesde</th>
-                                        <th scope="col">Accion</th>
-
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr th:each="evento : ${eventos}"
-                                        class="table-active">
-                                        <td th:text="${evento.getNombre()}"></td>
-                                        <td th:text="${evento.getFechaHoraDesde()}"></td>
-                                        <td align="center">
-                                            <a class="btn btn-success"
-                                                th:href="@{/usuarios/eventos/info/{id}(id=${evento.getId()})}">
-                                                Ver más
-                                            </a>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-
+            <div class="card p-5">
+                <div class="card-header bg-primary"></div>
+                <div class="card-body">
+                    <form action="#" th:action="@{/usuarios/eventos/{id_evento}/presentacion(id_evento=${trabajo.evento.getId()})}" th:object="${trabajo}" method="post">
+                        <div class="form-group row">
+                            <label class="col-md-2" for="fecha">Fecha Inicio:</label>
+                            <input type="datetime-local"
+                                th:field="*{fechaHora}" class="form-control
+                                form-control-sm col-md-6 " id="fecha" required>
+                            <small></small>
                         </div>
-                    </div>
+                        <div class="card-footer bg-primary">
+                            <button type="submit" name="nuevoTrabajo" class="btn
+                                btn-light">Crear</button>
+                            <a th:href="@{/usuarios/eventos/presentacion}" class="btn btn-light">Cancelar</a>
+                        </div>
+                        
+                    </form>
                 </div>
-
             </div>
-
-
         </div>
         <footer th:fragment="footer" class="bg-dark text-white text-center
             fixed-bottom text">

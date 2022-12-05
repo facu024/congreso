@@ -15,5 +15,7 @@ public interface IEventService {
 
     Evento info(Long id);
 
-    
+    public void save(Evento evento);
+
+    // public Evento getOne(Long id);
 }

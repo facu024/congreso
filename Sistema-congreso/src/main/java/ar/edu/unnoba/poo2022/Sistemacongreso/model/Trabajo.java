@@ -1,7 +1,11 @@
 package ar.edu.unnoba.poo2022.Sistemacongreso.model;
 
 import javax.persistence.*;
-import java.util.Date;
+
+import org.springframework.format.annotation.DateTimeFormat;
+
+import java.time.LocalDateTime;
+
 
 @Entity
 @Table(name="Trabajos")
@@ -9,14 +13,14 @@ public class Trabajo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     @Column(nullable = false)
-    private Date fechaHora;
-
+    @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
+    private LocalDateTime fechaHora;
     @ManyToOne
     @JoinColumn(name = "usuario_id")
     private Usuario usuario;
-
+    @ManyToOne(optional = false, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private Evento evento;
     public Usuario getUsuario() {
         return usuario;
     }
@@ -33,11 +37,11 @@ public class Trabajo {
         this.id = id;
     }
 
-    public Date getFechaHora() {
-        return fechaHora;
-    }
+    public LocalDateTime getFechaHora() {return fechaHora;}
 
-    public void setFechaHora(Date fechaHora) {
-        this.fechaHora = fechaHora;
-    }
+    public void setFechaHora(LocalDateTime fechaHora) {this.fechaHora = fechaHora;}
+
+    public Evento getEvento() {return evento;}
+
+    public void setEvento(Evento evento) {this.evento = evento;}
 }

@@ -40,7 +40,7 @@ public class Admin  implements UserDetails {
 
     @Override
     public String getUsername() {
-        return null;
+        return this.getEmail();
     }
 
     public void setPassword(String password) {

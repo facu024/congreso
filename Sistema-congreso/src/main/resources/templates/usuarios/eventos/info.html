@@ -29,20 +29,19 @@
                     </button>
                     <div class="collapse navbar-collapse"
                         id="navbarSupportedContent">
-                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <ul class="navbar-nav m-auto mb-2 mb-lg-0">
                             <li class="nav-item">
-                                <a class="nav-link " th:href="@{/home}">Inicio</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" th:href="@{/usuarios}">Usuarios</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" th:href="@{/admins}">Administradores</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" th:href="@{/eventos}">Eventos</a>
+                                <a class="nav-link" th:href="@{/usuarios/eventos}">Eventos</a>
                             </li>
                         </ul>
+
+                        <form action="#" th:action="@{/logout}" th:method="post"
+                            class="d-flex">
+                            <input class="btn btn-primary form-control me-2"
+                                type="submit" value="Cerrar sesión"
+                                onclick="return confirm('¿Desea cerrar sesión?');">
+                    </form>
+
                     </div>
                 </div>
             </nav>
@@ -52,40 +51,36 @@
             <div>
                 <div class="container ">
                     <h2>EVENTO</h2>
-                    <div class="botones">
-                        <a class="btn btn-primary" th:href="@{/eventos/new}">Agregar
-                            nuevo evento</a>
-                    </div>
                     <div class="row">
                         <div class="col">
                             <table class="table table-primary">
                                 <thead>
-                                    <tr>
+                                    <tr class=" align-content-center ">
                                         <th scope="col">Nombre</th>
                                         <th scope="col">Descripcion</th>
-                                        <th scope="col">fechaHoraDesde</th>
-                                        <th scope="col">fechaHoraHasta</th>
-                                        <th scope="col">Accion</th>
-
-                                    </tr>
+                                        <th scope="col">Fecha y Hora Inicio</th>
+                                        <th scope="col">Fecha y Hora Fin</th>
+                                        <th scope="col">Acciones</th>
+                                   </tr>
                                 </thead>
                                 <tbody>
                                     <tr th:each="evento: ${evento}"
                                         class="table-active">
                                         <td th:text="${evento.getNombre()}"></td>
                                         <td th:text="${evento.getDescripcion}"></td>
-                                        <td
-                                            th:text="${evento.getFechaHoraDesde()}"></td>
-                                        <td
-                                            th:text="${evento.getFechaHoraHasta()}"></td>
+                                        <td th:text="${evento.getFechaHoraDesde()}"></td>
+                                        <td th:text="${evento.getFechaHoraHasta()}"></td>
+                                        <td> <a class="btn btn-success" th:href="@{/usuarios/eventos/{id}/presentacion/new(id=${evento.id})}">Agregar
+                                            nuevo trabajo</a>
+                                        </td>
+                                        <td> <a class="btn btn-primary" th:href="@{/usuarios/eventos/{id}/presentacion(id=${evento.id})}">Ver trabajos</a>
+                                        </td>
                                     </tr>
                                 </tbody>
                             </table>
-
                         </div>
                     </div>
                 </div>
-
             </div>
 
 

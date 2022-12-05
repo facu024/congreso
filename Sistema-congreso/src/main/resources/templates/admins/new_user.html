@@ -27,22 +27,22 @@
           <div class="collapse navbar-collapse"
             id="navbarSupportedContent">
             <ul class="navbar-nav m-auto mb-2 mb-lg-0">
+                       
               <li class="nav-item">
-                <a class="nav-link" th:href="@{/admins/usuarios}">Usuarios</a>
+                  <a class="nav-link" th:href="@{/admins/usuarios}">Usuarios</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" th:href="@{/admins}">Administradores</a>
+                  <a class="nav-link" th:href="@{/admins}">Administradores</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" th:href="@{/admins/eventos}">Eventos</a>
+                  <a class="nav-link" th:href="@{/admins/eventos}">Eventos</a>
               </li>
-            </ul>
+          </ul>
 
-            <form action="#" th:action="@{/admins/logout}" th:method="post"
+            <form action="#" th:action="@{/logout}" th:method="post"
               class="d-flex">
               <input class="btn btn-primary form-control me-2"
-                type="submit" value="Cerrar sesión"
-                onclick="return confirm('¿Desea cerrar sesión?');">
+                type="submit" value="Cerrar sesión"/>
             </form>
 
 
@@ -54,7 +54,7 @@
       <div class="card p-5">
         <div class="card-header bg-primary"></div>
         <div class="card-body">
-          <form action="#" th:action="@{/admins}" th:object="${admin}"
+          <form action="#" th:action="@{/admins/usuarios}" th:object="${usuario}"
             method="post">
             <div class="form-group row">
               <label class="col-md-2" for="nombre">Nombre:</label>
@@ -85,8 +85,8 @@
               <small></small>
             </div>
             <div class="card-footer bg-primary">
-              <button type="submit" name="nuevoadmin" class="btn btn-light">Crear</button>
-              <a th:href="@{/admins}" class="btn btn-light">Cancelar</a>
+              <button type="submit" name="newUser" class="btn btn-light">Crear</button>
+              <a th:href="@{/usuarios}" class="btn btn-light">Cancelar</a>
             </div>
           </form>
         </div>

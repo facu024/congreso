@@ -1,13 +1,13 @@
 package ar.edu.unnoba.poo2022.Sistemacongreso.model;
 
-import org.springframework.boot.convert.DataSizeUnit;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
+
+import java.time.LocalDateTime;
 import java.util.Collection;
-import java.util.Date;
 
 @Entity
 @Table(name = "Eventos")
@@ -15,23 +15,15 @@ public class Evento implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Temporal(TemporalType.TIMESTAMP)
     @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
-    private Date fechaHoraDesde;
-    @Temporal(TemporalType.TIMESTAMP)
+    private LocalDateTime fechaHoraDesde;
     @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
-    private Date fechaHoraHasta;
-
-
-
-
+    private LocalDateTime fechaHoraHasta;
 
     @Column(nullable = false)
     private String nombre;
-
-
-
     private String descripcion;
+   
 
     public Long getId() {
         return id;
@@ -49,19 +41,19 @@ public class Evento implements UserDetails {
         this.nombre = nombre;
     }
 
-    public Date getFechaHoraDesde() {
+    public LocalDateTime getFechaHoraDesde() {
         return fechaHoraDesde;
     }
 
-    public void setFechaHoraDesde(Date fechaHoraDesde) {
+    public void setFechaHoraDesde(LocalDateTime fechaHoraDesde) {
         this.fechaHoraDesde = fechaHoraDesde;
     }
 
-    public Date getFechaHoraHasta() {
+    public LocalDateTime getFechaHoraHasta() {
         return fechaHoraHasta;
     }
 
-    public void setFechaHoraHasta(Date fechaHoraHasta) {
+    public void setFechaHoraHasta(LocalDateTime fechaHoraHasta) {
         this.fechaHoraHasta = fechaHoraHasta;
     }
 

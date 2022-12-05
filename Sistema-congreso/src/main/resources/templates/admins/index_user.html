@@ -28,19 +28,15 @@
                         id="navbarSupportedContent">
                         <ul class="navbar-nav m-auto mb-2 mb-lg-0">
                             <li class="nav-item">
-                                <a class="nav-link " th:href="@{/home}">Inicio</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" th:href="@{/usuarios}">Usuarios</a>
+                                <a class="nav-link" th:href="@{/admins/usuarios}">Usuarios</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" th:href="@{/admins}">Administradores</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" th:href="@{/eventos}">Eventos</a>
+                                <a class="nav-link" th:href="@{/admins/eventos}">Eventos</a>
                             </li>
                         </ul>
-
                         <form action="#" th:action="@{/logout}" th:method="post"
                             class="d-flex">
                             <input class="btn btn-primary form-control me-2"
@@ -54,20 +50,15 @@
             </nav>
         </header>
         <div class="container">
-            <div>
-                <h1>
-                    Hola <span th:text="${usuarioSesion.getNombre()}">
-                    </span>!
-                </h1>
-            </div>
             <div class="mensaje" th:if="${message}">
                 <span th:text="${message}"></span>
             </div>
             <div>
+
                 <div class="container ">
                     <h2>Lista de usuarios</h2>
                     <div class="botones">
-                        <a class="btn btn-primary" th:href="@{/usuarios/new}">Agregar
+                        <a class="btn btn-primary" th:href="@{/admins/usuarios/new}">Agregar
                             nuevo usuario</a>
                     </div>
                     <div class="row">
@@ -87,16 +78,19 @@
                                         <td th:text="${user.getEmail()}"></td>
                                         <td th:text="${user.getNombre()}"></td>
                                         <td th:text="${user.getApellido()}"></td>
-                                        <td align = "center" >
+                                        <td align="center">
                                             <a class=" btn btn-danger"
                                                 id="btnDelete"
-                                                th:href="@{/usuarios/delete/{id}(id=${user.id})}"
+                                                th:href="@{/admins/usuarios/delete/{id}(id=${user.id})}"
                                                 onclick="return confirm('Vas a eliminar este usuario. ¿Borrar?');">
                                                 Eliminar
                                             </a>
+
                                         </tr>
+
                                     </tbody>
                                 </table>
+
                             </div>
                         </div>
                     </div>

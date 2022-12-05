@@ -11,4 +11,9 @@ public class HomeController {
     public String goHome(Model model){
         return "home";
     }
+
+    @GetMapping("/register")
+    public String goRegister(Model model){
+        return "register";
+    }
 }
