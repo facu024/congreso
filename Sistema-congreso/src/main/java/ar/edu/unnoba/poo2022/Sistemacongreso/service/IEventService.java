@@ -17,5 +17,7 @@ public interface IEventService {
 
     public void save(Evento evento);
 
+    public List<Evento> getAllEventosActivos();
+
     // public Evento getOne(Long id);
 }

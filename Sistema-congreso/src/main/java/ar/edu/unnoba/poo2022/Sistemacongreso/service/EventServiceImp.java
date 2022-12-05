@@ -15,6 +15,10 @@ public class EventServiceImp implements IEventService {
     @Autowired
     private EventoRepository repository;
 
+    public List<Evento> getAllEventosActivos(){
+        return repository.findAllEventosActivos();
+    }
+
     @Override
     public Evento create(Evento evento) {
         Evento newEvento = repository.save(evento);

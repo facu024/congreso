@@ -21,7 +21,7 @@ public class UserEventController {
 
     @GetMapping
     public String index(Model model){
-        List<Evento> eventos = eventService.getAll();
+        List<Evento> eventos = eventService.getAllEventosActivos();
         model.addAttribute("eventos",eventos);
         return "usuarios/eventos/index";
     }

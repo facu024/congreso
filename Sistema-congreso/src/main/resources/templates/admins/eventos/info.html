@@ -68,6 +68,7 @@
                                     <tr>
                                         <th scope="col">Nombre</th>
                                         <th scope="col">Descripcion</th>
+                                        <th scope="col">Modalidad</th>
                                         <th scope="col">Fecha/Hora Inicio</th>
                                         <th scope="col">Fecha/Hora Fin</th>
                                         <th scope="col">Accion</th>
@@ -78,7 +79,8 @@
                                     <tr th:each="evento: ${evento}"
                                         class="table-active">
                                         <td th:text="${evento.getNombre()}"></td>
-                                        <td th:text="${evento.getDescripcion}"></td>
+                                        <td th:text="${evento.getDescripcion()}"></td>
+                                        <td th:text="${evento.getModalidad()}"></td>
                                         <td th:text="${#temporals.format(evento.getFechaHoraDesde(), 'dd/MM/yyyy HH:mm')}"></td>
                                         <td th:text="${#temporals.format(evento.getFechaHoraHasta(), 'dd/MM/yyyy HH:mm')}"></td>
                                         <td> <a class="btn btn-primary"

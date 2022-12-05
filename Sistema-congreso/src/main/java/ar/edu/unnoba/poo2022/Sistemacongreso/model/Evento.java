@@ -15,16 +15,29 @@ public class Evento implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(nullable = false)
     @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
     private LocalDateTime fechaHoraDesde;
+    @Column(nullable = false)
     @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
     private LocalDateTime fechaHoraHasta;
 
     @Column(nullable = false)
     private String nombre;
+    @Column(nullable = false)
     private String descripcion;
+    @Column(nullable = false)
+    private String modalidad;
     
    
+
+    public String getModalidad() {
+        return modalidad;
+    }
+
+    public void setModalidad(String modalidad) {
+        this.modalidad = modalidad;
+    }
 
     public Long getId() {
         return id;
