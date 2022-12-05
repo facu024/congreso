@@ -23,6 +23,7 @@ public class Evento implements UserDetails {
     @Column(nullable = false)
     private String nombre;
     private String descripcion;
+    
    
 
     public Long getId() {

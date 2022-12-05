@@ -56,6 +56,7 @@
                             <table class="table table-primary">
                                 <thead>
                                     <tr>
+                                        <th scope="col">Descripción</th>
                                         <th scope="col">Fecha Trabajo</th>
                                         <th scope="col">Usuario</th>
                                     </tr>
@@ -63,7 +64,8 @@
                                 <tbody>
                                     <tr th:each="trabajo : ${trabajos}"
                                         class="table-active">
-                                        <td th:text="${trabajo.getFechaHora()}"></td>
+                                        <td th:text="${trabajo.getDescripcion()}"></td>
+                                        <td th:text="${#temporals.format(trabajo.getFechaHora(), 'dd/MM/yyyy HH:mm')}"></td>
                                         <td th:text="${trabajo.getUsuario().getEmail()}"></td>
                                     </tr>
                                 </tbody>

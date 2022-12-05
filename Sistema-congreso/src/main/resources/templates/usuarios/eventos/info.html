@@ -8,7 +8,7 @@
             href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
             integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
             crossorigin="anonymous">
-        <title>Title</title>
+        <title>Información</title>
         <link rel="stylesheet" href="/css/index.css">
 
         <!-- <link rel="stylesheet" href="/css/index.css"> -->
@@ -68,8 +68,8 @@
                                         class="table-active">
                                         <td th:text="${evento.getNombre()}"></td>
                                         <td th:text="${evento.getDescripcion}"></td>
-                                        <td th:text="${evento.getFechaHoraDesde()}"></td>
-                                        <td th:text="${evento.getFechaHoraHasta()}"></td>
+                                        <td th:text="${#temporals.format(evento.getFechaHoraDesde(), 'dd/MM/yyyy HH:mm')}"></td>
+                                        <td th:text="${#temporals.format(evento.getFechaHoraHasta(), 'dd/MM/yyyy HH:mm')}"></td>
                                         <td> <a class="btn btn-success" th:href="@{/usuarios/eventos/{id}/presentacion/new(id=${evento.id})}">Agregar
                                             nuevo trabajo</a>
                                         </td>

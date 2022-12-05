@@ -8,7 +8,7 @@
             href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
             integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
             crossorigin="anonymous">
-        <title>Title</title>
+        <title>Eventos</title>
         <link rel="stylesheet" href="/css/index.css">
 
         <!-- <link rel="stylesheet" href="/css/index.css"> -->
@@ -53,12 +53,13 @@
                     <h2>Lista de eventos</h2>
                     <div class="row">
                         <div class="col">
-                            <table class="table table-primary">
+                            <table class="table table-primary ">
                                 <thead>
-                                    <tr>
+                                    <tr >
                                         <th scope="col">Nombre</th>
-                                        <th scope="col">fechaHoraDesde</th>
-                                        <th scope="col">Accion</th>
+                                        <th scope="col">Fecha Inicio</th>
+                                        <th scope="col">Fecha Fin</th>
+                                        <th class="text-center" scope="col">Accion</th>
 
                                     </tr>
                                 </thead>
@@ -66,8 +67,9 @@
                                     <tr th:each="evento : ${eventos}"
                                         class="table-active">
                                         <td th:text="${evento.getNombre()}"></td>
-                                        <td th:text="${evento.getFechaHoraDesde()}"></td>
-                                        <td align="center">
+                                        <td th:text="${#temporals.format(evento.getFechaHoraDesde(), 'dd/MM/yyyy HH:mm')}"></td>
+                                        <td th:text="${#temporals.format(evento.getFechaHoraHasta(), 'dd/MM/yyyy HH:mm')}"></td>
+                                        <td>
                                             <a class="btn btn-success"
                                                 th:href="@{/usuarios/eventos/info/{id}(id=${evento.getId()})}">
                                                 Ver más

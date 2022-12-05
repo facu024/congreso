@@ -21,6 +21,17 @@ public class Trabajo {
     private Usuario usuario;
     @ManyToOne(optional = false, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Evento evento;
+    @Column(nullable = false)
+    private String descripcion;
+    
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
     public Usuario getUsuario() {
         return usuario;
     }

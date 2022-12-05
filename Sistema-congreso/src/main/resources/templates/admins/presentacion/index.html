@@ -8,7 +8,7 @@
             href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
             integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
             crossorigin="anonymous">
-        <title>Title</title>
+        <title>Presentaciones</title>
         <link rel="stylesheet" href="/css/index.css">
 
         <!-- <link rel="stylesheet" href="/css/index.css"> -->
@@ -64,6 +64,7 @@
                             <table class="table table-primary">
                                 <thead>
                                     <tr>
+                                        <th scope="col">Descripción</th>
                                         <th scope="col">Fecha Trabajo</th>
                                         <th scope="col">Usuario</th>
                                     </tr>
@@ -71,7 +72,8 @@
                                 <tbody>
                                     <tr th:each="trabajo : ${trabajos}"
                                         class="table-active">
-                                        <td th:text="${trabajo.getFechaHora()}"></td>
+                                        <td th:text="${trabajo.getDescripcion()}"></td>
+                                        <td th:text="${#temporals.format(trabajo.getFechaHora(), 'dd/MM/yyyy HH:mm')}"></td>
                                         <td th:text="${trabajo.getUsuario().getEmail()}"></td>
                                     </tr>
                                 </tbody>

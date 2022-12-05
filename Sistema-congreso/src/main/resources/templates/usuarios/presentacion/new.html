@@ -51,10 +51,17 @@
                 <div class="card-body">
                     <form action="#" th:action="@{/usuarios/eventos/{id_evento}/presentacion(id_evento=${trabajo.evento.getId()})}" th:object="${trabajo}" method="post">
                         <div class="form-group row">
-                            <label class="col-md-2" for="fecha">Fecha Inicio:</label>
+                            <label class="col-md-3" for="fecha">Fecha Inicio:</label>
                             <input type="datetime-local"
                                 th:field="*{fechaHora}" class="form-control
-                                form-control-sm col-md-6 " id="fecha" required>
+                                form-control-sm col-md-7 " id="fecha" required>
+                            <small></small>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-md-3" for="desc">Descripción:</label>
+                            <input type="text"
+                                th:field="*{descripcion}" class="form-control
+                                form-control-sm col-md-7 " id="desc" required>
                             <small></small>
                         </div>
                         <div class="card-footer bg-primary">
