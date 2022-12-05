@@ -8,10 +8,10 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
 public interface EventoRepository extends JpaRepository<Evento,Long> {
-
+    //muestra ordenado los eventos
     @Query("SELECT e FROM Evento e ORDER BY e.nombre, e.fechaHoraDesde")
     public List<Evento> findAll();
-
+    //muestra los eventos activos
     @Query("SELECT e FROM Evento e WHERE e.fechaHoraHasta >= LOCALTIMESTAMP ORDER BY e.nombre, e.fechaHoraDesde")
     public List<Evento> findAllEventosActivos();
 

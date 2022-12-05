@@ -10,7 +10,6 @@ import ar.edu.unnoba.poo2022.Sistemacongreso.repository.TrabajoRepository;
 
 @Service
 public class TrabajoServiceImp implements ITrabajoService {
-
     @Autowired
     private TrabajoRepository repository;
 
@@ -21,8 +20,9 @@ public class TrabajoServiceImp implements ITrabajoService {
 
     @Override
     public List<Trabajo> getAll() {
-        return repository.findAll(Sort.by("nombre").ascending()); 
+        return repository.findAll(Sort.by("fechaHora").ascending()); 
     }
+
     
 
     @Override
@@ -32,5 +32,8 @@ public class TrabajoServiceImp implements ITrabajoService {
 
     public List<Trabajo> findAllByEventoId(Long id_evento) {
         return repository.findAllByEventoId(id_evento);
+    }
+    public List<Trabajo> findAllByEventoIdAndUsuarioId(Long id_evento,Long id_usuario) {
+        return repository.findAllByEventoIdAndUsuarioId(id_evento,id_usuario);
     }
 }

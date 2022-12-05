@@ -25,8 +25,9 @@ public class UserTrabajoController  {
 
 
     @GetMapping
-    public String index(@PathVariable("id_evento") Long id_evento, Model model){
-        List<Trabajo> trabajos = trabajoService.findAllByEventoId(id_evento);
+    public String index(@PathVariable("id_evento") Long id_evento, Model model, Authentication authentication){
+        Usuario usuario = (Usuario)authentication.getPrincipal();
+        List<Trabajo> trabajos = trabajoService.findAllByEventoIdAndUsuarioId(id_evento, usuario.getId());
         model.addAttribute("trabajos", trabajos);
         return "usuarios/presentacion/index";
     }
