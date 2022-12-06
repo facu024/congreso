@@ -19,7 +19,7 @@ public class UserController {
     public UserController(IUserService userService){
         this.userService = userService;
     }
- 
+    
 
     @GetMapping("/new")
     public String userNew(Model model) {
