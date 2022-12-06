@@ -27,8 +27,8 @@ public class AdminEventController {
 
     @PostMapping
     public String create(@ModelAttribute Evento evento){
-        eventService.create(evento);
-        return "redirect:/admins/eventos";
+        evento = eventService.create(evento);
+        return "redirect:/admins/eventos/"+ evento.getId()+"";
     }
 
     @GetMapping
@@ -64,6 +64,6 @@ public class AdminEventController {
     @PostMapping("/{id}")
     public String save(@ModelAttribute Evento evento) {
         eventService.save(evento);
-        return "redirect:/admins/eventos";
+        return "redirect:/admins/eventos/{id}";
     }
 }
