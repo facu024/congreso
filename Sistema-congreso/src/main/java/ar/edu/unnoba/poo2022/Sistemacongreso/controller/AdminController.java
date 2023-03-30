@@ -2,6 +2,8 @@ package ar.edu.unnoba.poo2022.Sistemacongreso.controller;
 
 import ar.edu.unnoba.poo2022.Sistemacongreso.model.Admin;
 import ar.edu.unnoba.poo2022.Sistemacongreso.service.IAdminService;
+import org.springframework.security.core.Authentication;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -44,7 +46,14 @@ public class AdminController {
     }
 
     @GetMapping("/delete/{id}")
-    public String delete(@PathVariable("id") Long id) {
+    public String delete(@PathVariable("id") Long id,
+                         Authentication authentication,
+                         RedirectAttributes redirectAttributes){
+        Admin adminSesion = (Admin) authentication.getPrincipal();
+        if(adminSesion.getId().equals(id)){
+            redirectAttributes.addFlashAttribute("message","No te podes borrar");
+            return "redirect:/admins";
+        }
         adminService.delete(id);
         return "redirect:/admins";
     }

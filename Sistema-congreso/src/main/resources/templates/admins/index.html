@@ -9,8 +9,9 @@
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
           crossorigin="anonymous">
     <title>Administradores</title>
-
+   
     <link rel="stylesheet" href="/css/index.css">
+    <link rel="shortcut icon" href="/img/icon.png">
 </head>
 <body>
 </head>
@@ -18,7 +19,7 @@
     <header th:fragment="header">
         <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
             <div class="container-fluid">
-                <a class="navbar-brand" href="#">UNNOBA</a>
+                <a class="navbar-brand" href="https://sitio.unnoba.edu.ar/">UNNOBA</a>
                 <button class="navbar-toggler" type="button"
                     data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent"
@@ -56,7 +57,7 @@
 <div class="container">
     <div>
         <div class="container ">
-            <h2>Lista de ADMINISTRADORES</h2>
+            <h2>Lista de administradores:</h2>
             <div class="botones">
               <a class="btn btn-primary" th:href="@{/admins/new}">Agregar administrador</a>
             </div>
