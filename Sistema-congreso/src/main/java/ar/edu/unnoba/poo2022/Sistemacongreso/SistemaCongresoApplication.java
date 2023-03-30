@@ -10,5 +10,3 @@ public class SistemaCongresoApplication {
 		SpringApplication.run(SistemaCongresoApplication.class, args);
 	}
 }
-
-

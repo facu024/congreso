@@ -1,12 +1,14 @@
 package ar.edu.unnoba.poo2022.Sistemacongreso.controller;
 
 import java.util.List;
-
+import java.io.IOException;
+import java.nio.file.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import ar.edu.unnoba.poo2022.Sistemacongreso.model.Evento;
 import ar.edu.unnoba.poo2022.Sistemacongreso.model.Trabajo;
@@ -41,9 +43,25 @@ public class UserTrabajoController  {
     }
 
     @PostMapping
-    public String create(@ModelAttribute Trabajo trabajo,@PathVariable("id_evento") Long id_evento, Model model, Authentication authentication){
+    public String create(@ModelAttribute Trabajo trabajo,@PathVariable("id_evento") Long id_evento, Model model, Authentication authentication, @RequestParam("file") MultipartFile archivo){
         Usuario usuario = (Usuario)authentication.getPrincipal();
         Evento evento = eventoService.info(id_evento);
+
+        if (!archivo.isEmpty()) {
+          Path  directorioArchivos = Paths.get("src//main//resources//static/imagenes");
+          String rutaAbsoluta = directorioArchivos.toFile().getAbsolutePath();
+          try {
+            byte[] bytesArchivos = archivo.getBytes();
+            Path rutaCompleta = Paths.get(rutaAbsoluta + "//" + archivo.getOriginalFilename());
+            Files.write(rutaCompleta,bytesArchivos);
+
+            trabajo.setArchivo(archivo.getOriginalFilename());
+        } catch (IOException e) {
+            
+            e.printStackTrace();
+        }
+        
+        } 
         trabajo.setUsuario(usuario);
         trabajo.setEvento(evento);
         trabajoService.create(trabajo);

@@ -1,12 +1,12 @@
 package ar.edu.unnoba.poo2022.Sistemacongreso.service;
 
 import java.util.List;
-
+import ar.edu.unnoba.poo2022.Sistemacongreso.model.Trabajo;
+import ar.edu.unnoba.poo2022.Sistemacongreso.repository.TrabajoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.data.domain.Sort;
-import ar.edu.unnoba.poo2022.Sistemacongreso.model.Trabajo;
-import ar.edu.unnoba.poo2022.Sistemacongreso.repository.TrabajoRepository;
+
 
 @Service
 public class TrabajoServiceImp implements ITrabajoService {
@@ -22,11 +22,13 @@ public class TrabajoServiceImp implements ITrabajoService {
     public List<Trabajo> getAll() {
         return repository.findAll(Sort.by("fechaHora").ascending()); 
     }
-
-    
+    @Override
+    public Trabajo detalleTrabajo(Long id) {
+        return repository.findById(id).get();
+    }
 
     @Override
-    public void delete(Long id) {
+    public void borrar(Long id) {
         repository.deleteById(id);
     }
 

@@ -28,9 +28,10 @@
                         id="navbarSupportedContent">
                         <ul class="navbar-nav m-auto mb-2 mb-lg-0">
 
-                           
+
                             <li class="nav-item">
-                                <a class="nav-link" th:href="@{/usuarios/eventos}">Eventos</a>
+                                <a class="nav-link"
+                                    th:href="@{/usuarios/eventos}">Eventos</a>
                             </li>
                         </ul>
 
@@ -49,7 +50,9 @@
             <div class="card p-5">
                 <div class="card-header bg-primary"></div>
                 <div class="card-body">
-                    <form action="#" th:action="@{/usuarios/eventos/{id_evento}/presentacion(id_evento=${trabajo.evento.getId()})}" th:object="${trabajo}" method="post">
+                    <form action="#"
+                        th:action="@{/usuarios/eventos/{id_evento}/presentacion(id_evento=${trabajo.evento.getId()})}"
+                        th:object="${trabajo}" method="post" enctype="multipart/form-data">
                         <div class="form-group row">
                             <label class="col-md-3" for="fecha">Fecha Inicio:</label>
                             <input type="datetime-local"
@@ -64,12 +67,20 @@
                                 form-control-sm col-md-7 " id="desc" required>
                             <small></small>
                         </div>
+                        <div class="form-group row">
+                            <label class="col-md-3" for="archivo">Cargar Archivo:</label>
+                            <input type="file" name="file"
+                                class="form-control
+                                form-control-sm col-md-7 " id="archivo" required>
+                            <small></small>
+                        </div>
                         <div class="card-footer bg-primary">
                             <button type="submit" name="nuevoTrabajo" class="btn
                                 btn-light">Crear</button>
-                            <a th:href="@{/usuarios/eventos/presentacion}" class="btn btn-light">Cancelar</a>
+                            <a th:href="@{/usuarios/eventos/presentacion}"
+                                class="btn btn-light">Cancelar</a>
                         </div>
-                        
+
                     </form>
                 </div>
             </div>
