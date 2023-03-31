@@ -69,6 +69,10 @@
                                         <td th:text="${trabajo.getDescripcion()}"></td>
                                         <td th:text="${#temporals.format(trabajo.getFechaHora(), 'dd/MM/yyyy HH:mm')}"></td>
                                         <td th:text="${trabajo.getUsuario().getEmail()}"></td>
+                                        <td>
+                                            <a class="btn btn-success"th:href="@{/usuarios/eventos/{id}/presentacion/detalleTrabajo/{id_trabajo} (id_trabajo=${trabajo.getId()})}">Ver más
+                                            </a>
+                                        </td>
                                     </tr>
                                 </tbody>
                             </table>

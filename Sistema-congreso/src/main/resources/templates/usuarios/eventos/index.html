@@ -71,9 +71,7 @@
                                         <td th:text="${#temporals.format(evento.getFechaHoraDesde(), 'dd/MM/yyyy HH:mm')}"></td>
                                         <td th:text="${#temporals.format(evento.getFechaHoraHasta(), 'dd/MM/yyyy HH:mm')}"></td>
                                         <td>
-                                            <a class="btn btn-success"
-                                                th:href="@{/usuarios/eventos/info/{id}(id=${evento.getId()})}">
-                                                Ver más
+                                            <a class="btn btn-success"th:href="@{/usuarios/eventos/info/{id}(id=${evento.getId()})}">Ver más
                                             </a>
                                         </td>
                                     </tr>

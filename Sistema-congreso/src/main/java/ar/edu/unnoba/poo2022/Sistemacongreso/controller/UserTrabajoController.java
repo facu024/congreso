@@ -60,11 +60,20 @@ public class UserTrabajoController  {
             
             e.printStackTrace();
         }
-        
         } 
         trabajo.setUsuario(usuario);
         trabajo.setEvento(evento);
         trabajoService.create(trabajo);
         return "redirect:/usuarios/eventos/"+id_evento+"/presentacion";
     }
+    //el controlador de detalle trabajo funciona correctamente, lo que no funciona es el boton del html
+    @GetMapping("/detalleTrabajo/{idT}")
+    public String info(@PathVariable("idT") Long id,Model model) {
+        Trabajo trabajo= trabajoService.info(id);
+        model.addAttribute("trabajo",trabajo);
+        return "/usuarios/presentacion/detalleTrabajo";
+    }
 }
+
+
+

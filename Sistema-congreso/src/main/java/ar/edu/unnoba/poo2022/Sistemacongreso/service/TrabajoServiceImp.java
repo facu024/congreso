@@ -23,7 +23,7 @@ public class TrabajoServiceImp implements ITrabajoService {
         return repository.findAll(Sort.by("fechaHora").ascending()); 
     }
     @Override
-    public Trabajo detalleTrabajo(Long id) {
+    public Trabajo info(Long id) {
         return repository.findById(id).get();
     }
 
