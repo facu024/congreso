@@ -29,8 +29,10 @@ public class UserTrabajoController  {
     @GetMapping
     public String index(@PathVariable("id_evento") Long id_evento, Model model, Authentication authentication){
         Usuario usuario = (Usuario)authentication.getPrincipal();
+        Evento evento = eventoService.info(id_evento);
         List<Trabajo> trabajos = trabajoService.findAllByEventoIdAndUsuarioId(id_evento, usuario.getId());
         model.addAttribute("trabajos", trabajos);
+        model.addAttribute("evento",evento);
         return "usuarios/presentacion/index";
     }
     @GetMapping("/new")
@@ -46,16 +48,17 @@ public class UserTrabajoController  {
     public String create(@ModelAttribute Trabajo trabajo,@PathVariable("id_evento") Long id_evento, Model model, Authentication authentication, @RequestParam("file") MultipartFile archivo){
         Usuario usuario = (Usuario)authentication.getPrincipal();
         Evento evento = eventoService.info(id_evento);
+        String folder = "/archivos/";
 
         if (!archivo.isEmpty()) {
-          Path  directorioArchivos = Paths.get("src//main//resources//static/imagenes");
+          Path  directorioArchivos = Paths.get("src//main//resources//static"+folder);
           String rutaAbsoluta = directorioArchivos.toFile().getAbsolutePath();
           try {
             byte[] bytesArchivos = archivo.getBytes();
             Path rutaCompleta = Paths.get(rutaAbsoluta + "//" + archivo.getOriginalFilename());
             Files.write(rutaCompleta,bytesArchivos);
 
-            trabajo.setArchivo(archivo.getOriginalFilename());
+            trabajo.setArchivo(folder+archivo.getOriginalFilename());
         } catch (IOException e) {
             
             e.printStackTrace();
@@ -68,7 +71,7 @@ public class UserTrabajoController  {
     }
     //el controlador de detalle trabajo funciona correctamente, lo que no funciona es el boton del html
     @GetMapping("/detalleTrabajo/{idT}")
-    public String info(@PathVariable("idT") Long id,Model model) {
+    public String info(@PathVariable("idT") Long id,@PathVariable("id_evento") Long id_evento,Model model) {
         Trabajo trabajo= trabajoService.info(id);
         model.addAttribute("trabajo",trabajo);
         return "/usuarios/presentacion/detalleTrabajo";

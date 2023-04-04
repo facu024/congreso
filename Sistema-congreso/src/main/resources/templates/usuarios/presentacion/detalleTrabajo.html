@@ -49,6 +49,23 @@
         <div class="container">
             <div class="card p-5">
                 <div class="card-header bg-primary"></div>
+                <div class="card-body">
+                    <img  class="img-thumbnail rounded float-left" 
+                    th:src="${trabajo.archivo}" 
+                    th:alt="${trabajo.archivo}"
+                    style="max-width: 25%;cursor: pointer;"
+                    th:onclick="download(this)"
+                    >
+                    <ul class="list-group">
+                        
+                        <li class="list-group-item" th:text="'Usuario:      ' + ${trabajo.getUsuario().getNombre()}+ ' ' + ${trabajo.getUsuario().getApellido()}  "></li>
+                        <li class="list-group-item" th:text="'Email:        ' + ${trabajo.getUsuario().getEmail()}"></li>
+                        <li class="list-group-item" th:text="'Descripcion:  ' + ${trabajo.getDescripcion()}"></li>
+                        <li class="list-group-item" th:text="'Fecha:        ' + ${#temporals.format(trabajo.getFechaHora(), 'dd/MM/yyyy HH:mm')}"></li>
+                    </ul>
+                    
+
+                </div>
             </div>
         </div>
         <footer th:fragment="footer" class="bg-dark text-white text-center
@@ -61,5 +78,14 @@
             src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
             crossorigin="anonymous"></script>
+        <script>
+            function download(url){
+                alert(url.src)
+                const link=document.createElement('a')
+                link.href=url.src
+                link.download=Date.now()
+                link.click()
+            }
+        </script>
     </body>
 </html>
