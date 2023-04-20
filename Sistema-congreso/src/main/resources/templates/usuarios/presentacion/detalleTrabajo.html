@@ -48,12 +48,16 @@
         </header>
         <div class="container">
             <div class="card p-5">
+                <h1>Detalles del trabajo</h1>
                 <div class="card-header bg-primary"></div>
+                
                 <div class="card-body">
-                    <img  class="img-thumbnail rounded float-left" 
+                    
+                    
+                    <img  class="img-thumbnail rounded float-right" 
                     th:src="${trabajo.archivo}" 
                     th:alt="${trabajo.archivo}"
-                    style="max-width: 25%;cursor: pointer;"
+                    style="max-width: 40%;cursor: pointer;"
                     th:onclick="download(this)"
                     >
                     <ul class="list-group">
@@ -80,7 +84,6 @@
             crossorigin="anonymous"></script>
         <script>
             function download(url){
-                alert(url.src)
                 const link=document.createElement('a')
                 link.href=url.src
                 link.download=Date.now()

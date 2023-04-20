@@ -10,7 +10,7 @@
             crossorigin="anonymous">
         <title>Presentaciones</title>
         <link rel="stylesheet" href="/css/index.css">
-        <link rel="shortcut icon" href="/img/icon.png">
+      
 
         <!-- <link rel="stylesheet" href="/css/index.css"> -->
     </head>
@@ -65,9 +65,11 @@
                             <table class="table table-primary">
                                 <thead>
                                     <tr>
-                                        <th scope="col">Nombre Archivo</th>
+                                        <th scope="col">Descripción</th>
                                         <th scope="col">Fecha Trabajo</th>
                                         <th scope="col">Usuario</th>
+                                        <th scope="col"></th>
+
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -76,6 +78,10 @@
                                         <td th:text="${trabajo.getDescripcion()}"></td>
                                         <td th:text="${#temporals.format(trabajo.getFechaHora(), 'dd/MM/yyyy HH:mm')}"></td>
                                         <td th:text="${trabajo.getUsuario().getEmail()}"></td>
+                                        <td>
+                                            <a class="btn btn-info">Ver más
+                                            </a>
+                                        </td>     
                                     </tr>
                                 </tbody>
                             </table>

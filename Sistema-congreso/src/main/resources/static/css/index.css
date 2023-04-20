@@ -6,23 +6,6 @@ h1, h2{
 }
 
 
-/* #btnDelete{
-    text-decoration: none;
-    background-color: red;
-    border-radius: 5px;
-    font-size: 12px;
-    border: 1px solid black ;
-    color: white;
-} */
-/* #btnEdit{
-    text-decoration: none;
-    background-color: green;
-    border-radius: 5px;
-    font-size: 12px;
-    border: 1px solid black ;
-    color: white;
-} */
-
 .botones{
     text-align: center;
     padding: 20px;

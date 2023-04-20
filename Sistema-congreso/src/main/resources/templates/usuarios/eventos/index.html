@@ -10,7 +10,7 @@
             crossorigin="anonymous">
         <title>Eventos</title>
         <link rel="stylesheet" href="/css/index.css">
-        <link rel="shortcut icon" href="/img/icon.png">
+ 
 
         <!-- <link rel="stylesheet" href="/css/index.css"> -->
     </head>
@@ -60,7 +60,7 @@
                                         <th scope="col">Nombre</th>
                                         <th scope="col">Fecha Inicio</th>
                                         <th scope="col">Fecha Fin</th>
-                                        <th class="text-center" scope="col">Accion</th>
+                                        <th class="text-center" scope="col"></th>
 
                                     </tr>
                                 </thead>
@@ -71,7 +71,7 @@
                                         <td th:text="${#temporals.format(evento.getFechaHoraDesde(), 'dd/MM/yyyy HH:mm')}"></td>
                                         <td th:text="${#temporals.format(evento.getFechaHoraHasta(), 'dd/MM/yyyy HH:mm')}"></td>
                                         <td>
-                                            <a class="btn btn-success"th:href="@{/usuarios/eventos/info/{id}(id=${evento.getId()})}">Ver más
+                                            <a class="btn btn-info"th:href="@{/usuarios/eventos/info/{id}(id=${evento.getId()})}">Ver más
                                             </a>
                                         </td>
                                     </tr>

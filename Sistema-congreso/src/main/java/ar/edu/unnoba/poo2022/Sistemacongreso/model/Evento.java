@@ -24,7 +24,7 @@ public class Evento implements UserDetails {
 
     @Column(nullable = false)
     private String nombre;
-    @Column(nullable = false)
+    @Column(nullable = false, columnDefinition = "TEXT")
     private String descripcion;
     @Column(nullable = false)
     private String modalidad;

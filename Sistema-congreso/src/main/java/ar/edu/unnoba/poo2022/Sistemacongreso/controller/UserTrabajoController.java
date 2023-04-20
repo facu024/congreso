@@ -48,7 +48,7 @@ public class UserTrabajoController  {
     public String create(@ModelAttribute Trabajo trabajo,@PathVariable("id_evento") Long id_evento, Model model, Authentication authentication, @RequestParam("file") MultipartFile archivo){
         Usuario usuario = (Usuario)authentication.getPrincipal();
         Evento evento = eventoService.info(id_evento);
-        String folder = "/archivos/";
+        String folder = "/trabajos/";
 
         if (!archivo.isEmpty()) {
           Path  directorioArchivos = Paths.get("src//main//resources//static"+folder);
@@ -69,7 +69,7 @@ public class UserTrabajoController  {
         trabajoService.create(trabajo);
         return "redirect:/usuarios/eventos/"+id_evento+"/presentacion";
     }
-    //el controlador de detalle trabajo funciona correctamente, lo que no funciona es el boton del html
+    
     @GetMapping("/detalleTrabajo/{idT}")
     public String info(@PathVariable("idT") Long id,@PathVariable("id_evento") Long id_evento,Model model) {
         Trabajo trabajo= trabajoService.info(id);

@@ -10,7 +10,7 @@
             crossorigin="anonymous">
         <title>Información</title>
         <link rel="stylesheet" href="/css/index.css">
-        <link rel="shortcut icon" href="/img/icon.png">
+   
 
         <!-- <link rel="stylesheet" href="/css/index.css"> -->
     </head>
@@ -51,7 +51,7 @@
 
             <div>
                 <div class="container ">
-                    <h2>EVENTO</h2>
+                    <br>
                     <div class="row">
                         <div class="col">
                             <table class="table table-primary">
@@ -61,7 +61,7 @@
                                         <th scope="col">Descripcion</th>
                                         <th scope="col">Fecha y Hora Inicio</th>
                                         <th scope="col">Fecha y Hora Fin</th>
-                                        <th scope="col">Acciones</th>
+                                        <th scope="col"></th>
                                    </tr>
                                 </thead>
                                 <tbody>
@@ -74,7 +74,7 @@
                                         <td> <a class="btn btn-success" th:href="@{/usuarios/eventos/{id}/presentacion/new(id=${evento.id})}">Agregar
                                             nuevo trabajo</a>
                                         </td>
-                                        <td> <a class="btn btn-primary" th:href="@{/usuarios/eventos/{id}/presentacion(id=${evento.id})}">Ver trabajos</a>
+                                        <td> <a class="btn btn-info" th:href="@{/usuarios/eventos/{id}/presentacion(id=${evento.id})}">Ver trabajos</a>
                                         </td>
                                     </tr>
                                 </tbody>

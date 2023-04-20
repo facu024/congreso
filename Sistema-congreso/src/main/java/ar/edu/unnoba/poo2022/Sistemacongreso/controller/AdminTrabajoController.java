@@ -15,11 +15,20 @@ public class AdminTrabajoController  {
 
     @Autowired
     private TrabajoServiceImp trabajoService;
+    
 
     @GetMapping
     public String index(@PathVariable("id_evento") Long id_evento, Model model){
         List<Trabajo> trabajos = trabajoService.findAllByEventoId(id_evento);
         model.addAttribute("trabajos", trabajos);
         return "admins/presentacion/index";
+    }
+
+    
+    @GetMapping("/detalleTrabajo/{idT}")
+    public String info(@PathVariable("idT") Long id,@PathVariable("id_evento") Long id_evento,Model model) {
+        Trabajo trabajo= trabajoService.info(id);
+        model.addAttribute("trabajo",trabajo);
+        return "/admins/presentacion/detalleTrabajo";
     }
 }
